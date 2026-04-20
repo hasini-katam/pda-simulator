@@ -1,0 +1,97 @@
+/* ============================================
+   ResultDisplay.css
+   ============================================ */
+
+.result-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  animation: resultReveal 0.4s ease;
+}
+
+@keyframes resultReveal {
+  0%   { opacity: 0; transform: scale(0.95) translateY(8px); }
+  60%  { transform: scale(1.02) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Accepted */
+.result-accepted {
+  background: rgba(0, 230, 118, 0.08);
+  border-color: rgba(0, 230, 118, 0.45);
+  box-shadow: var(--shadow-glow-green), inset 0 1px 0 rgba(0, 230, 118, 0.1);
+}
+
+/* Rejected */
+.result-rejected {
+  background: rgba(255, 61, 113, 0.08);
+  border-color: rgba(255, 61, 113, 0.45);
+  box-shadow: var(--shadow-glow-red), inset 0 1px 0 rgba(255, 61, 113, 0.1);
+}
+
+/* Icon circle */
+.result-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.result-accepted .result-icon {
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--accent-green);
+  border: 2px solid rgba(0, 230, 118, 0.4);
+  animation: spinIn 0.5s ease;
+}
+
+.result-rejected .result-icon {
+  background: rgba(255, 61, 113, 0.15);
+  color: var(--accent-red);
+  border: 2px solid rgba(255, 61, 113, 0.4);
+  animation: shakeIn 0.4s ease;
+}
+
+@keyframes spinIn {
+  from { transform: rotate(-90deg) scale(0.5); opacity: 0; }
+  to   { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+@keyframes shakeIn {
+  0%   { transform: translateX(-6px); }
+  25%  { transform: translateX(6px); }
+  50%  { transform: translateX(-4px); }
+  75%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+/* Text group */
+.result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-verdict {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.result-accepted .result-verdict { color: var(--accent-green); }
+.result-rejected .result-verdict { color: var(--accent-red); }
+
+.result-sub {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}

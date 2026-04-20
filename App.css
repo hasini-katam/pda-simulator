@@ -1,0 +1,325 @@
+/* ============================================
+   App.css — Application Layout
+   ============================================ */
+
+/* ── Root App Container ───────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ── Header ───────────────────────────────── */
+.app-header {
+  text-align: center;
+  padding: 50px 0 40px;
+  position: relative;
+}
+
+.app-header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  margin: 20px auto 0;
+}
+
+.header-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.title-accent {
+  color: var(--accent-cyan);
+  position: relative;
+}
+
+.app-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+
+/* PDA definition */
+.pda-definition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 10px;
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: inline-flex;
+}
+
+.def-item {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.def-sep {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+/* ── Main ─────────────────────────────────── */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Sections ─────────────────────────────── */
+.app-section {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.app-section:hover {
+  border-color: var(--border-bright);
+}
+
+/* Section title row */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  background: var(--bg-hover);
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.mode-badge {
+  margin-left: auto;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.mode-step {
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--accent-cyan);
+}
+
+.mode-full {
+  background: rgba(79, 156, 249, 0.12);
+  border: 1px solid rgba(79, 156, 249, 0.4);
+  color: var(--accent-blue);
+}
+
+/* ── Input section ────────────────────────── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pda-input {
+  width: 100%;
+  padding: 14px 70px 14px 18px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pda-input::placeholder { color: var(--text-muted); letter-spacing: 0.05em; font-size: 0.9rem; }
+.pda-input:focus { border-color: var(--accent-blue); box-shadow: var(--shadow-glow-blue); }
+.pda-input.input-error { border-color: var(--accent-red); box-shadow: var(--shadow-glow-red); }
+
+.input-char-count {
+  position: absolute;
+  right: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Error message */
+.error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 61, 113, 0.08);
+  border: 1px solid rgba(255, 61, 113, 0.35);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-red);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.error-icon { font-size: 0.85rem; flex-shrink: 0; margin-top: 1px; }
+
+/* Example buttons */
+.examples-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.examples-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.example-btn {
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.example-balanced {
+  background: rgba(79, 156, 249, 0.1);
+  border: 1px solid rgba(79, 156, 249, 0.35);
+  color: var(--accent-blue);
+}
+.example-balanced:hover {
+  background: rgba(79, 156, 249, 0.2);
+  border-color: var(--accent-blue);
+}
+
+.example-reject {
+  background: rgba(255, 61, 113, 0.08);
+  border: 1px solid rgba(255, 61, 113, 0.3);
+  color: var(--accent-red);
+}
+.example-reject:hover {
+  background: rgba(255, 61, 113, 0.16);
+  border-color: var(--accent-red);
+}
+
+.example-empty {
+  background: rgba(255, 215, 64, 0.08);
+  border: 1px solid rgba(255, 215, 64, 0.3);
+  color: var(--accent-yellow);
+}
+.example-empty:hover {
+  background: rgba(255, 215, 64, 0.14);
+  border-color: var(--accent-yellow);
+}
+
+/* ── Visualization grid ───────────────────── */
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: start;
+}
+
+.viz-tape-panel {
+  min-width: 0;
+}
+
+.viz-stack-panel {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+/* ── Footer ───────────────────────────────── */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px 0 10px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.footer-sep { color: var(--border-bright); }
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 600px) {
+  .app { padding: 0 14px 40px; }
+  .app-section { padding: 18px 16px; }
+
+  .viz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-stack-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pda-definition {
+    display: none;
+  }
+}

@@ -1,0 +1,148 @@
+/* ============================================
+   Controls.css
+   ============================================ */
+
+.controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Base button */
+.ctrl-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctrl-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.04);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.ctrl-btn:hover:not(:disabled)::before { opacity: 1; }
+
+.ctrl-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.ctrl-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 0.85rem;
+}
+
+/* Simulate — blue */
+.btn-simulate {
+  background: rgba(79, 156, 249, 0.15);
+  border-color: rgba(79, 156, 249, 0.5);
+  color: var(--accent-blue);
+}
+.btn-simulate:hover:not(:disabled) {
+  background: rgba(79, 156, 249, 0.25);
+  border-color: var(--accent-blue);
+  box-shadow: var(--shadow-glow-blue);
+}
+
+/* Step Mode — cyan */
+.btn-step-mode {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.4);
+  color: var(--accent-cyan);
+}
+.btn-step-mode:hover:not(:disabled) {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.2);
+}
+
+/* Next Step — green */
+.btn-next {
+  background: rgba(0, 230, 118, 0.12);
+  border-color: rgba(0, 230, 118, 0.45);
+  color: var(--accent-green);
+  animation: pulseGreen 1.5s infinite;
+}
+.btn-next:hover:not(:disabled) {
+  background: rgba(0, 230, 118, 0.22);
+  border-color: var(--accent-green);
+  box-shadow: var(--shadow-glow-green);
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+  50%       { box-shadow: 0 0 10px 2px rgba(0, 230, 118, 0.2); }
+}
+
+/* Done state (no more steps) */
+.btn-done {
+  animation: none;
+  opacity: 0.6;
+}
+
+/* Reset — muted red */
+.btn-reset {
+  background: rgba(255, 61, 113, 0.1);
+  border-color: rgba(255, 61, 113, 0.35);
+  color: var(--accent-red);
+}
+.btn-reset:hover {
+  background: rgba(255, 61, 113, 0.18);
+  border-color: var(--accent-red);
+  box-shadow: var(--shadow-glow-red);
+}
+
+/* Step progress bar */
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-hover);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}

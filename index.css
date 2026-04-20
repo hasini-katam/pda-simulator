@@ -1,0 +1,83 @@
+/* ============================================
+   PDA SIMULATOR — Global Styles
+   Aesthetic: Terminal / Industrial Brutalist
+   ============================================ */
+
+:root {
+  --bg-base: #0a0c10;
+  --bg-panel: #10141c;
+  --bg-card: #161b26;
+  --bg-hover: #1e2535;
+
+  --border: #252d3d;
+  --border-bright: #3a4560;
+
+  --accent-blue: #4f9cf9;
+  --accent-cyan: #00e5ff;
+  --accent-green: #00e676;
+  --accent-red: #ff3d71;
+  --accent-yellow: #ffd740;
+  --accent-orange: #ff6d00;
+
+  --text-primary: #e8edf5;
+  --text-secondary: #8899bb;
+  --text-muted: #4a5568;
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-glow-blue: 0 0 20px rgba(79, 156, 249, 0.25);
+  --shadow-glow-green: 0 0 20px rgba(0, 230, 118, 0.3);
+  --shadow-glow-red: 0 0 20px rgba(255, 61, 113, 0.3);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(79, 156, 249, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 156, 249, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+/* Selection */
+::selection { background: rgba(79, 156, 249, 0.3); color: var(--text-primary); }

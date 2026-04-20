@@ -1,0 +1,171 @@
+/* ============================================
+   StackVisualizer.css
+   ============================================ */
+
+.stack-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 220px;
+}
+
+/* Header */
+.stack-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.stack-count {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Stack body */
+.stack-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  min-height: 200px;
+}
+
+/* Top indicator */
+.stack-top-indicator {
+  text-align: center;
+  padding: 4px 0 8px;
+  transition: color 0.2s;
+}
+
+.stack-top-indicator.pushed .arrow-label { color: var(--accent-green); }
+.stack-top-indicator.popped .arrow-label { color: var(--accent-red); }
+
+.arrow-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+/* Stack cells wrapper */
+.stack-cells {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+/* Empty state */
+.stack-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 100px;
+}
+
+.empty-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+/* Individual stack cell */
+.stack-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.stack-cell.stack-top {
+  background: rgba(79, 156, 249, 0.1);
+  border-color: var(--accent-blue);
+}
+
+/* Push animation */
+.stack-cell.animate-push {
+  animation: pushIn 0.35s ease;
+}
+
+@keyframes pushIn {
+  0%   { opacity: 0; transform: translateY(-10px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cell-item {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-yellow);
+}
+
+.cell-tag {
+  font-size: 0.6rem;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Bottom indicator */
+.stack-bottom-indicator {
+  padding: 8px 0 4px;
+  text-align: center;
+  border-top: 2px solid var(--border-bright);
+  margin-top: 4px;
+}
+
+.bottom-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Action badge */
+.action-badge {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+  animation: badgePop 0.25s ease;
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(0.9); opacity: 0.6; }
+  60%  { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.action-push         { background: rgba(0, 230, 118, 0.12); border: 1px solid rgba(0, 230, 118, 0.4); color: var(--accent-green); }
+.action-pop          { background: rgba(255, 215, 64, 0.12); border: 1px solid rgba(255, 215, 64, 0.4); color: var(--accent-yellow); }
+.action-accept       { background: rgba(0, 230, 118, 0.15); border: 1px solid rgba(0, 230, 118, 0.5); color: var(--accent-green); }
+.action-reject-empty,
+.action-reject-remaining { background: rgba(255, 61, 113, 0.12); border: 1px solid rgba(255, 61, 113, 0.4); color: var(--accent-red); }
+.action-start        { background: rgba(79, 156, 249, 0.12); border: 1px solid rgba(79, 156, 249, 0.4); color: var(--accent-blue); }
